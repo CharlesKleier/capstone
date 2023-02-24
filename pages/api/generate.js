@@ -1,9 +1,16 @@
 import { Configuration, OpenAIApi } from "openai";
 
+// const fs = require('fs');
+// const pdf = require('pdf-parse');
+
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
+
+// const dataBuffer = fs.readFileSync(req.body.resume);
+// pdf(dataBuffer).then(data => {
+//   const pdfText = data.text;
 
 export default async function (req, res) {
   if (!configuration.apiKey) {
@@ -15,21 +22,36 @@ export default async function (req, res) {
     return;
   }
 
-  const animal = req.body.animal || '';
-  if (animal.trim().length === 0) {
+  const question = req.body.question || '';
+  if (question.trim().length === 0) {
     res.status(400).json({
       error: {
-        message: "Please enter a valid animal",
+        message: "Please enter a valid question",
       }
     });
     return;
   }
 
+  // const dataBuffer = fs.readFileSync(req.body.resume);
+  // pdf(dataBuffer).then(data => {
+  //   const pdfText = data.text;
+
+  // const resume = req.body.resume || '';
+  // if (question.trim().length === 0) {
+  //   res.status(400).json({
+  //     error: {
+  //       message: "Please enter a valid pdf of your resume",
+  //     }
+  //   });
+  //   return;
+  // }
+
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(animal),
+      prompt: generatePrompt(question), //+ pdfText,
       temperature: 0.6,
+      max_tokens: 256
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch(error) {
@@ -48,15 +70,19 @@ export default async function (req, res) {
   }
 }
 
-function generatePrompt(animal) {
-  const capitalizedAnimal =
-    animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  return `Suggest three names for an animal that is a superhero.
+function generatePrompt(question) {
+  const capitalizedQuestion =
+    question[0].toUpperCase() + question.slice(1).toLowerCase();
+    return `Answer as a helpful, friendly, happy career advisor.
+    
+    Question: ${capitalizedQuestion}
+    Answer:`;
+//   return `Suggest three names for an animal that is a superhero.
 
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: ${capitalizedAnimal}
-Names:`;
+// Animal: Cat
+// Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
+// Animal: Dog
+// Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
+// Animal: ${capitalizedAnimal}
+// Names:`;
 }

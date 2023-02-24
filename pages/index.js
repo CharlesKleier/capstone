@@ -3,7 +3,8 @@ import { useState } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const [animalInput, setAnimalInput] = useState("");
+  const [questionInput, setQuestionInput] = useState("");
+  // const [uploadedPDF, setPDFInput] = useState("")
   const [result, setResult] = useState();
 
   async function onSubmit(event) {
@@ -14,7 +15,8 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput }),
+        body: JSON.stringify({ question: questionInput }),
+        // body: JSON.stringify({ resume: uploadedPDF}),
       });
 
       const data = await response.json();
@@ -23,7 +25,7 @@ export default function Home() {
       }
 
       setResult(data.result);
-      setAnimalInput("");
+      setQuestionInput("");
     } catch(error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -34,22 +36,29 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/dog.png" />
+        <title>ResumAI</title>
+        <link rel="icon" href="/logo.png" />
       </Head>
 
       <main className={styles.main}>
-        <img src="/dog.png" className={styles.icon} />
-        <h3>Name my pet</h3>
+        <img src="/logo.png" className={styles.icon} />
+        <h3>Here to help you with your career!</h3>
         <form onSubmit={onSubmit}>
           <input
             type="text"
-            name="animal"
-            placeholder="Enter an animal"
-            value={animalInput}
-            onChange={(e) => setAnimalInput(e.target.value)}
+            name="question"
+            placeholder="Enter Question Here"
+            value={questionInput}
+            onChange={(e) => setQuestionInput(e.target.value)}
           />
-          <input type="submit" value="Generate names" />
+          {/* <input 
+            type="file"
+            name="resume"
+            placeholder="upload pdf here"
+            value={uploadedPDF}
+            onChange={(e) => setPDFInput(e.target.value)}
+            /> */}
+          <input type="submit" value="Get answer to your question" />
         </form>
         <div className={styles.result}>{result}</div>
       </main>
