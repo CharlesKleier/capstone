@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Welcome to ResumAI</title>
+  <link rel="stylesheet" href="styleTest.css">
+  <script>
+    const accordionBtns = document.querySelectorAll(".accordion-btn");
+  
+    accordionBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const answer = btn.nextElementSibling;
+        answer.classList.toggle("show");
+      });
+    });
+  </script>
+</head>
+<body>
+  <header class="header">
+  <img src="../public/logo2.png" alt="ResumAI Logo" class="header-logo">
+  <nav class="navbar">
+    <ul>
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="howto.html">How To</a></li>
+      <li><a href="chat.html">Chat</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+    </ul>
+    <ul class="logIn">
+      <li><a href="#">Sign Up</a></li>
+      <li><a href="#">Log In</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <div class="think-line"></div>
+  <main class="container-wrapper">
+    <section class="container-welcome">
+      <h2>Welcome To ResumAI!</h2>
+      <ul>
+        <li>ResumAI is a website designed to help you with your career by providing career guidance and advice.</li>
+        <li>Our AI-powered system can help you tailor your resume to a specific job posting.</li>
+        <li>We can help you avoid common mistakes and highlight relevant experience, and more.</li>
+      </ul>
+      <h3 class="test"> Try It Out!</h3>
+      <button class="button" onclick="window.location.href='http://localhost:3000'">Get Started</button>
+    </section>
+  </main>
+  <section class="qa-container">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="accordion">
+        <div class="question">
+          <button class="accordion-btn">How Does ResumAI Work?</button>
+          <div class="answer">
+            <p>ResumAI uses machine learning algorithms to analyze your resume and compare it to the job description, providing you with personalized recommendations on how to improve it. You can also ask ResumAI specific questions about your career or job search for more personalized advice.</p>
+          </div>
+        </div>
+        <div class="question">
+          <button class="accordion-btn">Is ResumAI Free to Use?</button>
+          <div class="answer">
+            <p>Yes, ResumAI is completely free to use. We believe that everyone should have access to career guidance and advice, regardless of their financial situation.</p>
+          </div>
+        </div>
+        <div class="question">
+          <button class="accordion-btn">Can ResumAI Guarantee That I Will Get a Job?</button>
+          <div class="answer">
+            <p>No, we cannot guarantee that you will get a job. However, we can provide you with personalized recommendations on how to improve your resume and increase your chances of getting hired.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="team-container">
+    <div class="container">
+      <h2> Confused? Check out our How To page!</h2>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <p>ResumAI &copy; 2023</p>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="agreement">
+      After May 19, project ResumAI will be continued by Dr. Chirag Shah. Please contact chirags@uw.edu (chirags@uw.edu) if you have any 
+      questions or concerns.
+    
+    <p>ResumAI will not use data submitted by users, and OpenAI Davinci will not use data submitted by customers via their API to train or improve their models. Any data sent through the API will be retained for abuse and misuse monitoring purposes for a maximum of 30 days, after which it will be deleted (unless otherwise required by the law). 
+    </p>
+    </div>
+  </footer>
+</body>
+</html>

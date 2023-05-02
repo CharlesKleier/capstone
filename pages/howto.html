@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>How To - ResumAI</title>
+  <link rel="stylesheet" href="styleTest.css">
+  <script>
+    const accordionBtns = document.querySelectorAll(".accordion-btn");
+  
+    accordionBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const answer = btn.nextElementSibling;
+        answer.classList.toggle("show");
+      });
+    });
+  </script>
+</head>
+<body>
+  <header class="header">
+    <img src="../public/logo2.png" alt="ResumAI Logo" class="header-logo">
+    <nav class="navbar">
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li class="active"><a href="#">How To</a></li>
+        <li><a href="http://localhost:3000">Chat</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+      </ul>
+      <ul class="logIn">
+        <li><a href="#">Sign Up</a></li>
+        <li><a href="#">Log In</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="think-line"></div>
+  <main class="container-wrapper">
+    <section class="container-howto">
+      <h2>How To Use ResumAI</h2>
+      <ol>
+        <li>Upload your resume to ResumAI</li>
+        <li>Select the job posting you want to apply for</li>
+        <li>Receive personalized recommendations on how to improve your resume</li>
+      </ol>
+    </section>
+  </main>
+  <section class="team-container">
+    <div class="container">
+      <h2>Want to know more about us? Check out our About Us page!</h2>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <p>ResumAI &copy; 2023</p>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="agreement">
+      After May 19, project ResumAI will be continued by Dr. Chirag Shah. Please contact chirags@uw.edu (chirags@uw.edu) if you have any 
+      questions or concerns.
+    
+    <p>ResumAI will not use data submitted by users, and OpenAI Davinci will not use data submitted by customers via their API to train or improve their models. Any data sent through the API will be retained for abuse and misuse monitoring purposes for a maximum of 30 days, after which it will be deleted (unless otherwise required by the law). 
+    </p>
+    </div>
+  </footer>
+</body>
+</html>
